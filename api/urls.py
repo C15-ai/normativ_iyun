@@ -1,9 +1,24 @@
-from django.urls import path
-from .views import PostListCreateAPIView, PostDetailAPIView
+from django.urls import path, include
+from rest_framework import routers
+
+from api.views import PostViewSet, RegisterView, LoginView, LogoutView
+
+
+
+router = routers.DefaultRouter()
+router.register('posts', PostViewSet)
+# urlpatterns = [
+#     # path('api/hello/', salom),
+#     path('api/v1/posts/list-create/', PostListCreateAPIView.as_view()),
+#     path('api/v1/posts/detail/<int:pk>/', PostDetailAPIView.as_view()),
+#
+# ]
+
 
 urlpatterns = [
-    # path('api/hello/', salom),
-    path('api/v1/posts/list-create/', PostListCreateAPIView.as_view()),
-    path('api/v1/posts/detail/<int:pk>/', PostDetailAPIView.as_view()),
+    path("", include(router.urls)),
 
+    path("register/", RegisterView.as_view()),
+    path("login/", LoginView.as_view()),
+    path("logout/", LogoutView.as_view()),
 ]
