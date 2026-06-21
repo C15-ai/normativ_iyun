@@ -15,10 +15,17 @@ router.register('posts', PostViewSet)
 # ]
 
 
-urlpatterns = [
-    path("", include(router.urls)),
+# urlpatterns = [
+#     path("", include(router.urls)),
+#
+#     path("register/", RegisterView.as_view()),
+#     path("login/", LoginView.as_view()),
+#     path("logout/", LogoutView.as_view()),
+# ]
 
-    path("register/", RegisterView.as_view()),
-    path("login/", LoginView.as_view()),
-    path("logout/", LogoutView.as_view()),
+urlpatterns = [
+    path('', include(router.urls)),
 ]
+
+
+
