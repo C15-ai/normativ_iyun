@@ -1,13 +1,18 @@
 from django.urls import path, include
-from rest_framework import routers
 from rest_framework.routers import DefaultRouter
 
-from api.views import PostViewSet
+from api.views import (PostViewSet,RegisterView,LoginView,LogoutView,)
 
 router = DefaultRouter()
 router.register("posts", PostViewSet)
 
-urlpatterns = router.urls
+urlpatterns = [
+    path("", include(router.urls)),
+
+    path("register/", RegisterView.as_view(), name="register"),
+    path("login/", LoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(), name="logout"),
+]
 # urlpatterns = [
 #     # path('api/hello/', salom),
 #     path('api/v1/posts/list-create/', PostListCreateAPIView.as_view()),

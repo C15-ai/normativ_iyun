@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id' , 'title' , 'content')
-
+        read_only_fields = ['author']
 
     def validate_title(self, value):
 

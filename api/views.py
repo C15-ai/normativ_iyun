@@ -67,6 +67,8 @@ class PostViewSet(viewsets.ModelViewSet):
 
     ordering = ['-created_at']
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 
